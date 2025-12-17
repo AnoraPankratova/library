@@ -1,0 +1,10 @@
+{
+    "name": "anora/lib",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "anora\\Lib\\": "src/"
+        }
+    },
+    "require": {}
+}
