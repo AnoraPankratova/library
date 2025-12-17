@@ -1,27 +1,33 @@
 <?php
 
-namespace anora\lib;
+namespace Anora\Lib;
 
-class Pizza
+abstract class Pizza
 {
-    public string $name;
-    public string $sauce;
-    public array $toppingss;
+    protected string $name;
+    protected string $dough;
+    protected string $sauce;
+    protected array $toppings = [];
 
-    public function __construct(string $name, string $sauce, array $toppingss)
-    {
-        $this->name = $name;
-        $this->sauce = $sauce;
-        $this->toppingss = $toppingss;
-    }
     public function prepare(): void
     {
-        echo "Началась готовка пиццы: {$this->name}\n";
-        echo "Добавлен соус: {$this->sauce}\n";
-        echo "Добавлены топики: " . implode(", ", $this->toppingss) . "\n";
+        echo "Началась готовка пиццы $this->name\n";
+        echo "Добавлен соус: $this->sauce\n";
+        echo "Добавлены топпинги: " . implode(', ', $this->toppings) . "\n";
     }
+
+    public function bake(): void
+    {
+        echo "Готовим при 250°C 12 минут\n";
+    }
+
     public function cut(): void
     {
         echo "Данную пиццу нарезают по диагонали\n";
+    }
+
+    public function box(): void
+    {
+        echo "Упаковываем в классическую коробку\n";
     }
 }

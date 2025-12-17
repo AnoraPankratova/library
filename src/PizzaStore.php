@@ -1,18 +1,20 @@
 <?php
 
-namespace anora\lib;
+namespace Anora\Lib;
 
-class PizzaStore
+use Anora\Lib\Pizza;
+
+abstract class PizzaStore
 {
-  public string $type;
-  public function createPizza(string $type): string
-  {
-    return $this->type;
-  }
-  public function orderPizza(string $type): void
-  {
-    $pizza = $this->createPizza($type);
-    $pizza->prepare();
-    $pizza->cut();
-  }
+    public function orderPizza(string $type): Pizza
+    {
+        $pizza = $this->createPizza($type);
+        $pizza->prepare();
+        $pizza->bake();
+        $pizza->cut();
+        $pizza->box();
+        return $pizza;
+    }
+
+    abstract protected function createPizza(string $type): Pizza;
 }
